@@ -1,58 +1,82 @@
-import { Table, Tag, Space } from 'antd';
+import { Table, message, Button } from "antd";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { DeleteOutlined } from "@ant-design/icons";
 
+function Product() {
+  const [product, setProduct] = useState([]);
+  const [refect, setRefect] = useState(0);
 
-function Product ()    {
-    const columns = [
-        {
-          title: 'Product Name',
-          dataIndex: 'product_name',
-          key: 'product_name',
-        },{
-            title: 'Price',
-            dataIndex: 'price',
-            key: 'price',
-          },{
-            title: 'Color',
-            dataIndex: 'color',
-            key: 'color',
-          },{
-            title: 'Departmen',
-            dataIndex: 'department',
-            key: 'department',
-          },
-      ];
-      
-      const data = [
-        {
-            "product_name": "IPhone X",
-            "price": "922.00",
-            "color": "lime",
-            "department": "Electronics"
-        },
-        {
-            "product_name": "Nokia neframe",
-            "price": "922.00000000000000",
-            "color": "limesssesese",
-            "department": "Electronics enci"
-          },
-          {
-            "product_name": "IPhone 12 promagh",
-            "price": "92222e232.00",
-            "color": "lime",
-            "department": "Electronics"
-          },
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          "https://618f1fd450e24d0017ce1601.mockapi.io/products"
+        );
+        setProduct(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+    }
 
+    fetchData();
+  }, [refect]);
 
-          
-      ];
-      
-      
-    return (
-        <div>
-            <h2>ini halaman Product</h2>
-            <Table columns={columns} dataSource={data} />
-        </div>
-    )
+  async function deleteProduct(id) {
+    try {
+      await axios.delete(
+        `https://618f1fd450e24d0017ce1601.mockapi.io/products/${id}`
+      );
+      setRefect(refect + 1);
+      message.success("BERHASIL delete");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const columns = [
+    {
+      title: "Product Name",
+      dataIndex: "product_name",
+      key: "product_name",
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+    },
+    {
+      title: "Color",
+      dataIndex: "color",
+      key: "color",
+    },
+    {
+      title: "Departmen",
+      dataIndex: "department",
+      key: "department",
+    },
+    {
+      title: "Action",
+      render: (record) => {
+        return (
+          <Button
+            onClick={() => deleteProduct(record.id)}
+            type="primary"
+            danger
+            shape="circle"
+            icon={<DeleteOutlined />}
+          />
+        );
+      },
+    },
+  ];
+
+  return (
+    <div>
+      <h2>ini halaman Product</h2>
+      <Table columns={columns} dataSource={product} />
+    </div>
+  );
 }
 
 export default Product;
