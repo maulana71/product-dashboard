@@ -1,7 +1,9 @@
 import { Table, message, Button } from "antd";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+
+import editProduct from "./EditProduct";
 
 function Product() {
   const [product, setProduct] = useState([]);
@@ -56,7 +58,7 @@ function Product() {
       key: "department",
     },
     {
-      title: "Action",
+      title: "Delete Product",
       render: (record) => {
         return (
           <Button
@@ -65,6 +67,19 @@ function Product() {
             danger
             shape="circle"
             icon={<DeleteOutlined />}
+          />
+        );
+      },
+    },
+    {
+      title: "Edit Product",
+      render: (record) => {
+        return (
+          <Button
+            onClick={() => editProduct(record.id)}
+            type="primary"
+            shape="circle"
+            icon={<EditOutlined />}
           />
         );
       },
