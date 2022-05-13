@@ -4,7 +4,6 @@ import {
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
-  EditOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { useState } from "react";
@@ -31,9 +30,6 @@ function Dashboard({ children }) {
           </Menu.Item>
           <Menu.Item key="2" icon={<DesktopOutlined />}>
             <Link to="add">Add Product</Link>
-          </Menu.Item>
-          <Menu.Item key="3" icon={<EditOutlined />}>
-            <Link to="edit/:id">Edit Product</Link>
           </Menu.Item>
           <SubMenu key="sub1" icon={<UserOutlined />} title="Anggota">
             <Menu.Item key="3">Evan Bebek</Menu.Item>

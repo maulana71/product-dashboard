@@ -2,12 +2,13 @@ import { Table, message, Button } from "antd";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-
-import editProduct from "./EditProduct";
+import { useNavigate } from "react-router-dom";
 
 function Product() {
   const [product, setProduct] = useState([]);
   const [refect, setRefect] = useState(0);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -76,7 +77,7 @@ function Product() {
       render: (record) => {
         return (
           <Button
-            onClick={() => editProduct(record.id)}
+            onClick={() => navigate(`/edit/${record.id}`, { state: record })}
             type="primary"
             shape="circle"
             icon={<EditOutlined />}
@@ -89,7 +90,7 @@ function Product() {
   return (
     <div>
       <h2>ini halaman Product</h2>
-      <Table columns={columns} dataSource={product} />
+      <Table scroll={{ x: 800 }} columns={columns} dataSource={product} />
     </div>
   );
 }

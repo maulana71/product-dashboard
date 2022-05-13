@@ -1,32 +1,32 @@
 import { Button, Form, Input, message } from "antd";
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 
 export default function EditProduct() {
   const [form] = Form.useForm();
   let navigate = useNavigate();
+  const { state } = useLocation();
   const { id } = useParams();
 
-  useEffect(() => {
-    getProductById();
-  }, []);
+  console.log(id);
+  console.log(state);
 
-  const getProductById = async () => {
-    const response = await fetch(
-      `https://618f1fd450e24d0017ce1601.mockapi.io/products${id}`
-    );
-    const data = await response.json();
-  };
+  form.setFieldsValue({
+    product_name: state.product_name,
+    price: state.price,
+    color: state.color,
+    department: state.department,
+  });
 
   async function onFinish(value) {
     try {
-      await axios.post(
-        "https://618f1fd450e24d0017ce1601.mockapi.io/products",
+      await axios.put(
+        `https://618f1fd450e24d0017ce1601.mockapi.io/products/${id}`,
         value
       );
       form.resetFields();
-      message.success("data berhasil ditambahkan");
+      message.success("data berhasil ubah");
       navigate("/");
     } catch (error) {
       message.error(error.message);
