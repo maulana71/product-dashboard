@@ -26,12 +26,12 @@ function Dashboard({ children }) {
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
-            <Link to="/"> Product</Link>
+            <Link to="/">Daftar Produk</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<DesktopOutlined />}>
-            <Link to="add">Add Product</Link>
+            <Link to="add">Tambah Nama Produk </Link>
           </Menu.Item>
-          <SubMenu key="sub1" icon={<UserOutlined />} title="Anggota">
+          {/* <SubMenu key="sub1" icon={<UserOutlined />} title="Anggota">
             <Menu.Item key="3">Evan Bebek</Menu.Item>
             <Menu.Item key="4">Indra sales mandiri</Menu.Item>
             <Menu.Item key="5">Akbar si Laper</Menu.Item>
@@ -39,9 +39,9 @@ function Dashboard({ children }) {
           <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
             <Menu.Item key="6">Team RRQ</Menu.Item>
             <Menu.Item key="8">Team Evos</Menu.Item>
-          </SubMenu>
+          </SubMenu> */}
           <Menu.Item key="9" icon={<FileOutlined />}>
-            Kantor
+            Kontak Saya
           </Menu.Item>
         </Menu>
       </Sider>
@@ -49,7 +49,7 @@ function Dashboard({ children }) {
         <Header className="site-layout-background" style={{ padding: 0 }} />
         <Content style={{ margin: "0 16px" }}>{children}</Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
+          Ant Design ©2022 Created by Maulana
         </Footer>
       </Layout>
     </Layout>

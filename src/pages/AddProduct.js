@@ -24,7 +24,7 @@ export default function AddProduct() {
   return (
     <Form form={form} layout="vertical" onFinish={onFinish} autoComplete="off">
       <Form.Item
-        label="Product Name"
+        label="Nama Produk"
         name="product_name"
         rules={[
           {
@@ -33,22 +33,22 @@ export default function AddProduct() {
           },
         ]}
       >
-        <Input placeholder="input nama product" />
+        <Input placeholder="input nama produk" />
       </Form.Item>
       <Form.Item
-        label="Price"
+        label="Harga"
         name="price"
         rules={[
           {
             required: true,
-            message: "silahkan masukan harga",
+            message: "silahkan masukkan harga",
           },
         ]}
       >
-        <Input placeholder="input harga" />
+        <Input input placeholder="input harga" />
       </Form.Item>
       <Form.Item
-        label="Color"
+        label="Warna"
         name="color"
         rules={[
           {
@@ -60,16 +60,16 @@ export default function AddProduct() {
         <Input placeholder="input warna" />
       </Form.Item>
       <Form.Item
-        label="Department"
+        label="Brand/Merek"
         name="department"
         rules={[
           {
             required: true,
-            message: "silahkan masukan department",
+            message: "silahkan masukan nama brand/merek",
           },
         ]}
       >
-        <Input placeholder="input department" />
+        <Input placeholder="input nama brand/merek" />
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit">

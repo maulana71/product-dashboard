@@ -39,27 +39,27 @@ function Product() {
 
   const columns = [
     {
-      title: "Product Name",
+      title: "Nama Produk",
       dataIndex: "product_name",
       key: "product_name",
     },
     {
-      title: "Price",
+      title: "Harga",
       dataIndex: "price",
       key: "price",
     },
     {
-      title: "Color",
+      title: "Warna",
       dataIndex: "color",
       key: "color",
     },
     {
-      title: "Departmen",
+      title: "Brand/Merek",
       dataIndex: "department",
       key: "department",
     },
     {
-      title: "Delete Product",
+      title: "Hapus Produk",
       render: (record) => {
         return (
           <Button
@@ -73,7 +73,7 @@ function Product() {
       },
     },
     {
-      title: "Edit Product",
+      title: "Edit Produk",
       render: (record) => {
         return (
           <Button
